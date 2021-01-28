@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Medicine_Details">
 
-
     <EditText
         android:id="@+id/medicineName"
         android:layout_width="223dp"

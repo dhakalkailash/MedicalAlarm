@@ -32,8 +32,7 @@ public class Medicine_Details extends AppCompatActivity {
         timeMinute = findViewById(R.id.etMinute);
         setTime    = findViewById(R.id.btnTime);
         setAlarm   = findViewById(R.id.btnAlarm);
-
-      setTime.setOnClickListener(new View.OnClickListener() {
+        setTime.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
               calendar = Calendar.getInstance();
