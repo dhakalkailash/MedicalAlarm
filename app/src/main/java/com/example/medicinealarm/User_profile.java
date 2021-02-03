@@ -103,7 +103,7 @@ public class User_profile extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(User_profile.this, "Profile sucessfully Updated ", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),Home.class));
+                                startActivity(new Intent(getApplicationContext(),New_Home.class));
                                 finish();
                             }
                         });

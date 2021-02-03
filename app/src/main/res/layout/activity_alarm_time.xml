@@ -7,34 +7,158 @@
     android:layout_height="match_parent"
     tools:context=".alarmTime">
 
-
     <TimePicker
         android:id="@+id/timepicker"
         android:layout_width="wrap_content"
         android:layout_height="347dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="21dp"
+        android:layout_marginTop="237dp"
         android:layout_marginEnd="47dp"
         android:layout_marginBottom="18dp" />
 
     <TextView
-        android:layout_width="158dp"
-        android:layout_height="36dp"
-        android:layout_above="@+id/timepicker"
         android:id="@+id/textView9"
+        android:layout_width="179dp"
+        android:layout_height="38dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="234dp"
-        android:layout_marginBottom="188dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="556dp"
         android:fontFamily="@font/aclonica"
         android:text="Medicine Name"
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="179dp"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginBottom="470dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Quantity to Take"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="511dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Total Medicine"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="223dp"
+        android:layout_marginBottom="423dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Times a Day"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="53dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="368dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Pick Time for Medicine"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/medicineName"
+        android:layout_width="201dp"
+        android:layout_height="39dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="204dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="555dp"
+        android:layout_toEndOf="@+id/textView9"
+        android:background="@color/black"
+        android:fontFamily="@font/aclonica"
+        android:text="Medicine Name"
+        android:textColor="@color/ic_launcher_background"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/totalMedicine"
+        android:layout_width="201dp"
+        android:layout_height="39dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="204dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="508dp"
+        android:layout_toEndOf="@+id/textView9"
+        android:background="@color/black"
+        android:fontFamily="@font/aclonica"
+        android:text="Total Medicine"
+        android:textColor="@color/ic_launcher_background"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/quantityTake"
+        android:layout_width="201dp"
+        android:layout_height="39dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="204dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="466dp"
+        android:layout_toEndOf="@+id/textView9"
+        android:background="@color/black"
+        android:fontFamily="@font/aclonica"
+        android:text="Quantity To Take"
+        android:textColor="@color/ic_launcher_background"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="196dp"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="204dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="417dp" />
 
 
 </RelativeLayout>

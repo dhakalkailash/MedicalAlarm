@@ -41,7 +41,7 @@ public class Medicine extends AppCompatActivity {
         mFor       = findViewById(R.id.mFor);
         mTime      = findViewById(R.id.mTime);
         qTakeBtn   = findViewById(R.id.qTake);
-        backBtn = findViewById(R.id.cancelBtn);
+        backBtn    = findViewById(R.id.cancelBtn);
 
         fAuth = FirebaseAuth.getInstance();
         user = fAuth.getCurrentUser();
@@ -55,7 +55,7 @@ public class Medicine extends AppCompatActivity {
                     return;
                 }
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("Medicine");
+                reference = rootNode.getReference("HospitalRecord");
 
                 // Get all the values from the text fields
 
@@ -65,14 +65,13 @@ public class Medicine extends AppCompatActivity {
                 String lastVisit = mQuantity.getText().toString();
                 String hospitalFor = mFor.getText().toString();
                 String visitAgain = mTime.getText().toString();
-                String quantityTake = qTakeBtn.getText().toString();
+                //String quantityTake = qTakeBtn.getText().toString();
 
                 UserMedicineClass helperClass  = new UserMedicineClass(currentuserName,doctorName,hospitalName,lastVisit,hospitalFor,visitAgain);
 
                 reference.child("users/"+user.getUid()).setValue(helperClass);
                 Toast.makeText(Medicine.this, " Details Added !! ", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),Medicine_Details.class));
-
             }
         });
 
@@ -80,7 +79,7 @@ public class Medicine extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(),alarmTime.class));
+                startActivity(new Intent(getApplicationContext(),New_Home.class));
 
             }
         });

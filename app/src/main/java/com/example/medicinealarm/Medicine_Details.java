@@ -12,16 +12,26 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Calendar;
 
 public class Medicine_Details extends AppCompatActivity {
 
-    EditText medicineName, medicineQuantity,timeDay,numberTake,timeHour,timeMinute ;
-    Button setTime, setAlarm;
+    EditText nameOfMedicine, medicineQuantity,medicineInDay,numberOfMedicine,timeHour,timeMinute ;
+    Button setTime, setAlarm, done;
     TimePickerDialog timePickerDialog;
     Calendar calendar;
     int currentHour;
     int currentMinute;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+    FirebaseAuth fAuth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +42,17 @@ public class Medicine_Details extends AppCompatActivity {
         timeMinute = findViewById(R.id.etMinute);
         setTime    = findViewById(R.id.btnTime);
         setAlarm   = findViewById(R.id.btnAlarm);
+
+        // this are for the user record ****
+        nameOfMedicine         = findViewById(R.id.medicineName);
+        medicineQuantity       = findViewById(R.id.medicinequantity);
+        medicineInDay          = findViewById(R.id.timeDay);
+        numberOfMedicine       = findViewById(R.id.numberTake);
+        done                   = findViewById(R.id.btndone);
+
+        fAuth = FirebaseAuth.getInstance();
+        user = fAuth.getCurrentUser();
+
         setTime.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -48,11 +69,11 @@ public class Medicine_Details extends AppCompatActivity {
                   }
               },
                       currentHour, currentMinute, false);
-              timePickerDialog.show();
+                      timePickerDialog.show();
           }
 
       });
-      // set Alarm Button will come into the play
+        // set Alarm Button will come into the play
 
         setAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,10 +90,40 @@ public class Medicine_Details extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(Medicine_Details.this, " Pleaes choose a time !! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Medicine_Details.this, " Please choose a time !! ", Toast.LENGTH_SHORT).show();
                 }
             }
       });
+
+        // Record of the medicine to the database *****
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(nameOfMedicine.getText().toString().isEmpty() || medicineQuantity.getText().toString().isEmpty()||
+                        medicineInDay.getText().toString().isEmpty()|| numberOfMedicine.getText().toString().isEmpty() || timeHour.getText().toString().isEmpty() ||
+                        timeMinute.getText().toString().isEmpty()){
+                    Toast.makeText(Medicine_Details.this, "One or Many Fields are empty ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("User");
+
+                String medicineName         = nameOfMedicine.getText().toString();
+                String medicinequantity     = medicineQuantity.getText().toString();
+                String timesAday            = medicineInDay.getText().toString();
+                String numberOfMedicineTake = numberOfMedicine.getText().toString();
+                String timeInHours          = timeHour.getText().toString();
+                String timeInMinute         = timeMinute.getText().toString();
+
+                MedicineHelperClass medicineClass = new MedicineHelperClass(medicineName, medicinequantity,timesAday,numberOfMedicineTake,timeInHours,timeInMinute);
+
+
+                reference.child("MedicineDetails").setValue(medicineClass);
+                Toast.makeText(Medicine_Details.this, " Reminder Added !! ", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),New_Home.class));
+
+            }
+        });
 
     }
 }

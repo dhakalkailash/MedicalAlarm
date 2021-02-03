@@ -57,7 +57,7 @@ public class Register extends AppCompatActivity {
         fStore      = FirebaseFirestore.getInstance();
 
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), Home.class));
+            startActivity(new Intent(getApplicationContext(), New_Home.class));
             finish();
         }
 
@@ -105,7 +105,7 @@ public class Register extends AppCompatActivity {
                                     Log.d(TAG,"onSuccess: user Profile is created for "+ userID);
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(), Home.class));
+                            startActivity(new Intent(getApplicationContext(), New_Home.class));
                             
                         }else{
                             Toast.makeText(Register.this, "Error!! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -128,7 +128,7 @@ public class Register extends AppCompatActivity {
         mMapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Home.class));
+                startActivity(new Intent(getApplicationContext(),New_Home.class));
             }
         });
 
