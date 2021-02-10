@@ -83,6 +83,8 @@ public class Medicine_Details extends AppCompatActivity {
                     intent.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(timeHour.getText().toString()));
                     intent.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(timeMinute.getText().toString()));
                     intent.putExtra(AlarmClock.EXTRA_MESSAGE, "set Alarm for the medicine ");
+                    intent.putExtra(AlarmClock.EXTRA_MESSAGE, String.valueOf(nameOfMedicine));
+                    intent.putExtra(AlarmClock.EXTRA_MESSAGE,  String.valueOf(medicineQuantity));
                     if (intent.resolveActivity(getPackageManager()) != null) {
                         startActivity(intent);
                     } else {

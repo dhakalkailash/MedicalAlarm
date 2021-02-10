@@ -40,7 +40,7 @@ public class bmi extends AppCompatActivity {
 
                 if(heightStr !=null && !"".equals(heightStr) && weightStr !=null && !"".equals(weightStr)){
                     double heightftValue = Float.parseFloat(heightStr) / 3.281;
-                    double heightinchValue = Float.parseFloat(heightStr)/ 39.37;
+                    double heightinchValue = Float.parseFloat(heightinchStr)/ 39.37;
                     double heightValue    =  (heightinchValue + heightftValue);
                     double weightValue = Float.parseFloat(weightStr) / 2.205;
 
@@ -58,11 +58,11 @@ public class bmi extends AppCompatActivity {
                 }else if(Float.compare(bmi,15f )>0 && Float.compare(bmi, 16f)<=0){
                     bmiLabel = "Oh God, Please Eat, You are Underweight";
                 }else if(Float.compare(bmi,16f )>0 && Float.compare(bmi, 18.5f)<=0){
-                    bmiLabel = " You are Underweight";
+                    bmiLabel = "You are Underweight";
                 }else if(Float.compare(bmi,18.5f )>0 && Float.compare(bmi, 25f)<=0){
                     bmiLabel = "You Are in Good Shape";
                 }else if(Float.compare(bmi,25f )>0 && Float.compare(bmi, 30f)<=0){
-                    bmiLabel = " Please WatchOut While Eatting, You are OverWeight";
+                    bmiLabel = "Please WatchOut While Eatting, You are OverWeight";
                 }else if(Float.compare(bmi,30f )>0 && Float.compare(bmi, 35f)<=0){
                     bmiLabel = "Oh God, Its Time To WorkOut, You Are OverWeight";
                 }else if(Float.compare(bmi,35f )>0 && Float.compare(bmi, 40f)<=0){
@@ -70,8 +70,8 @@ public class bmi extends AppCompatActivity {
                 }else{
                     bmiLabel = "Machine Broke !!! Machine Broke !! Get Out of here and Start WorkOut !!";
                 }
-                bmiLabel = bmi + "\n" + bmiLabel;
-                finalTxt.setText(bmiLabel);
+                //String fianlbmiLabel = (bmi+ "\n" +bmiLabel);
+                finalTxt.setText(bmi+ "\n" +bmiLabel);
 
 
             }
