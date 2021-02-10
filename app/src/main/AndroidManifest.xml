@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineAlarm">
+        <activity android:name=".Event_Calendar"></activity>
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,7 @@
         </activity>
         <activity
             android:name=".New_Home"
-            android:label="Home"></activity>
+            android:label="Home" />
 
         <service android:name=".AlarmService" />
 
@@ -42,7 +43,7 @@
             android:label="Medical Alarm" />
         <activity
             android:name=".Register"
-            android:label="Medical Alarm"></activity>
+            android:label="Medical Alarm" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -55,7 +55,7 @@ public class New_Home extends AppCompatActivity {
         eventImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Medicine_Details.class)); //  This one must be redo
+                startActivity(new Intent(getApplicationContext(),Event_Calendar.class)); //  This one must be redo
             }
         });
         emergencyImage.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +85,13 @@ public class New_Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Medicine.class));
+            }
+        });
+        // To naviagte to the Event Calendar
+        eventView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Event_Calendar.class));
             }
         });
 
