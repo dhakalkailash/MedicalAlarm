@@ -70,8 +70,8 @@ public class bmi extends AppCompatActivity {
                 }else{
                     bmiLabel = "Machine Broke !!! Machine Broke !! Get Out of here and Start WorkOut !!";
                 }
-                //String fianlbmiLabel = (bmi+ "\n" +bmiLabel);
-                finalTxt.setText(bmi+ "\n" +bmiLabel);
+                String finalbmiLabel = (bmi+ System.getProperty("line.separator") +bmiLabel);
+                finalTxt.setText(finalbmiLabel);
 
 
             }

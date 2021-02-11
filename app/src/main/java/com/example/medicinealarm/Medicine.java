@@ -20,7 +20,7 @@ public class Medicine extends AppCompatActivity {
 
     Button backBtn;
     EditText userName,dName,mName,mQuantity,mFor,mTime;
-    /*TextView textView2,textView3,textView4,textView5,textView6,textView7;*/
+
     TextView qTakeBtn;
 
     FirebaseDatabase rootNode;
@@ -51,11 +51,11 @@ public class Medicine extends AppCompatActivity {
             public void onClick(View v) {
                 if(userName.getText().toString().isEmpty()|| dName.getText().toString().isEmpty() || mName.getText().toString().isEmpty()||
                         mQuantity.getText().toString().isEmpty()|| mFor.getText().toString().isEmpty() || mTime.getText().toString().isEmpty()){
-                    Toast.makeText(Medicine.this, "One or Many Feilds are empty ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Medicine.this, "One or Many Fields are empty ", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("HospitalRecord");
+                reference = rootNode.getReference("Users");
 
                 // Get all the values from the text fields
 
@@ -65,11 +65,10 @@ public class Medicine extends AppCompatActivity {
                 String lastVisit = mQuantity.getText().toString();
                 String hospitalFor = mFor.getText().toString();
                 String visitAgain = mTime.getText().toString();
-                //String quantityTake = qTakeBtn.getText().toString();
 
                 UserMedicineClass helperClass  = new UserMedicineClass(currentuserName,doctorName,hospitalName,lastVisit,hospitalFor,visitAgain);
 
-                reference.child("users/"+user.getUid()).setValue(helperClass);
+                reference.child("HospitalRecord/"+user.getUid()).setValue(helperClass);
                 Toast.makeText(Medicine.this, " Details Added !! ", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),Medicine_Details.class));
             }
@@ -78,7 +77,6 @@ public class Medicine extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(getApplicationContext(),New_Home.class));
 
             }

@@ -50,7 +50,7 @@ public class UserMedicineClass {
         this.mQuantity = mQuantity;
     }
 
-    public String gethospitalForr() {
+    public String gethospitalFor() {
         return mFor;
     }
 

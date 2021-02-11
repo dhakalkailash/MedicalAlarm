@@ -1,5 +1,7 @@
 package com.example.medicinealarm;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,6 +52,8 @@ public class Medicine_Details extends AppCompatActivity {
         numberOfMedicine       = findViewById(R.id.numberTake);
         done                   = findViewById(R.id.btndone);
 
+
+
         fAuth = FirebaseAuth.getInstance();
         user = fAuth.getCurrentUser();
 
@@ -82,12 +86,13 @@ public class Medicine_Details extends AppCompatActivity {
                     Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM);
                     intent.putExtra(AlarmClock.EXTRA_HOUR, Integer.parseInt(timeHour.getText().toString()));
                     intent.putExtra(AlarmClock.EXTRA_MINUTES, Integer.parseInt(timeMinute.getText().toString()));
-                    intent.putExtra(AlarmClock.EXTRA_MESSAGE, "set Alarm for the medicine ");
-                    intent.putExtra(AlarmClock.EXTRA_MESSAGE, String.valueOf(nameOfMedicine));
-                    intent.putExtra(AlarmClock.EXTRA_MESSAGE,  String.valueOf(medicineQuantity));
+                    //intent.putExtra(AlarmClock.EXTRA_MESSAGE, notificationAlarm);
+                    intent.putExtra(AlarmClock.EXTRA_MESSAGE,"Take Medicine Name"+ " : " +
+                            nameOfMedicine.getText().toString()+" && "+" Quantity To Take :" + numberOfMedicine.getText().toString());
+
                     if (intent.resolveActivity(getPackageManager()) != null) {
                         startActivity(intent);
-                    } else {
+                        } else {
                         Toast.makeText(Medicine_Details.this, "App Cannot support this action !! ", Toast.LENGTH_SHORT).show();
                     }
 
@@ -108,7 +113,7 @@ public class Medicine_Details extends AppCompatActivity {
                     return;
                 }
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("User");
+                reference = rootNode.getReference("Users");
 
                 String medicineName         = nameOfMedicine.getText().toString();
                 String medicinequantity     = medicineQuantity.getText().toString();
@@ -120,7 +125,7 @@ public class Medicine_Details extends AppCompatActivity {
                 MedicineHelperClass medicineClass = new MedicineHelperClass(medicineName, medicinequantity,timesAday,numberOfMedicineTake,timeInHours,timeInMinute);
 
 
-                reference.child("MedicineDetails").setValue(medicineClass);
+                reference.child("MedicineRecord/"+user.getUid()).setValue(medicineClass);
                 Toast.makeText(Medicine_Details.this, " Reminder Added !! ", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),New_Home.class));
 
